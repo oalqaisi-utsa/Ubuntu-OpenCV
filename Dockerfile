@@ -1,4 +1,20 @@
-FROM alpine
+FROM ubuntu
 MAINTAINER Osamah Alqaisi osamah.alqaisi@my.utsa.edu
 
-RUN apk add --no-cache python3
+
+  
+WORKDIR /opencv
+
+RUN apt-get update; \
+    apt-get install -y --no-install-recommends python3-opencv; \
+    apt-get clean -qq; \
+    rm -rf /var/lib/apt/lists/*
+
+CMD ["python3","-c","'import cv2; print(cv2.getBuildInformation())'"]
+
+ADD face.py /opencv
+ADD face.xml /opencv
+ADD 1.jpg /opencv
+
+
+
