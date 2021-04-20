@@ -1,20 +1,9 @@
 FROM ubuntu
 MAINTAINER Osamah Alqaisi osamah.alqaisi@my.utsa.edu
 
-
-  
-WORKDIR /opencv
-
-RUN apt-get update; \
-    apt-get install -y --no-install-recommends python3-opencv; \
-    apt-get clean -qq; \
+RUN apt update && \
+    apt install -y wget python3 python3-distutils libglib2.0-0 libsm6 libxrender1 libxext6 && \
+    wget https://bootstrap.pypa.io/get-pip.py && \
+    python3 get-pip.py && \
+    pip3 install opencv-python && \
     rm -rf /var/lib/apt/lists/*
-
-CMD ["python3","-c","'import cv2; print(cv2.getBuildInformation())'"]
-
-ADD face.py /opencv
-ADD face.xml /opencv
-ADD 1.jpg /opencv
-
-
-
