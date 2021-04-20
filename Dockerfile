@@ -10,6 +10,4 @@ RUN apt-get update; \
 
 CMD ["python3","-c","'import cv2; print(cv2.getBuildInformation())'"]
 
-ADD face.py /opencv
-ADD face.xml /opencv
-ADD 1.jpg /opencv
+RUN apt install nettle-dev
