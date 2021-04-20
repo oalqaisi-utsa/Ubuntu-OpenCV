@@ -10,4 +10,5 @@ RUN apt-get update; \
 
 CMD ["python3","-c","'import cv2; print(cv2.getBuildInformation())'"]
 
-RUN apt install nettle-dev
+RUN apt-get update
+RUN apt install nettle-bin
