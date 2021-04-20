@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:groovy-20210325
 MAINTAINER Osamah Alqaisi osamah.alqaisi@my.utsa.edu
 
 
