@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:20.10
 MAINTAINER Osamah Alqaisi osamah.alqaisi@my.utsa.edu
 
 WORKDIR /opencv
