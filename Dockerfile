@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:rolling
 MAINTAINER Osamah Alqaisi osamah.alqaisi@my.utsa.edu
 
 WORKDIR /opencv
