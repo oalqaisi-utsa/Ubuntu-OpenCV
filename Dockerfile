@@ -1,13 +1,26 @@
-FROM ubuntu
-MAINTAINER Osamah Alqaisi osamah.alqaisi@my.utsa.edu
+FROM oalqaisi/opencv-build:exc AS build
 
-WORKDIR /opencv
+FROM ubuntu AS base
 
-RUN apt-get update; \
-    apt-get install -y --no-install-recommends python3-opencv; \
-    apt-get clean -qq; \
-    rm -rf /var/lib/apt/lists/*
+LABEL name="Osamah Alqaisi" \
+      email="osamah.alqaisi@my.utsa.edu"
 
-CMD ["python3","-c","'import cv2; print(cv2.getBuildInformation())'"]
+RUN apt-get update && apt-get upgrade -y \
+	&& apt-get -y install --no-install-recommends python3 python3-pip \
+	&& pip3 install numpy \
+	&& apt-get -qq autoremove \
+	&& apt-get -qq clean \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& rm -rf /tmp/*
 
-RUN rm -r /usr/share/doc/libnettle7
+COPY --from=build /usr/local/include/opencv4 /usr/local/include/opencv4
+COPY --from=build /usr/local/lib/python3.10/dist-packages/cv2 /usr/local/lib/python3.10/dist-packages/cv2
+COPY --from=build /usr/local/lib/libopencv* /usr/local/lib/
+
+RUN apt-get update \
+	&& apt-get -y install --no-install-recommends libjpeg62 libpng16-16 libtiff5 \
+	&& apt-get -qq autoremove \
+	&& apt-get -qq clean \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& rm -rf /tmp/* \
+	&& ldconfig
