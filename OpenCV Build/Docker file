@@ -45,4 +45,4 @@ RUN apt-get update && apt-get -y upgrade \
     && make -j$(nproc) \
     && make install \
     
-    
+CMD ["bash"]
