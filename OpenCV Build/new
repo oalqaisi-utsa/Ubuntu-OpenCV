@@ -1,0 +1,24 @@
+cmake -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D BUILD_SHARED_LIBS=ON \
+      -D WITH_GTK=OFF \
+      -D WITH_VTK=OFF \
+      -D WITH_CUDA=OFF \
+      -D WITH_OPENCL=ON \
+      -D WITH_FFMPEG=OFF \
+      -D WITH_GSTREAMER=OFF \
+      -D WITH_LIBV4L=OFF \
+      -D WITH_TBB=ON \
+      -D WITH_EIGEN=ON \
+      -D WITH_LAPACK=OFF \
+      -D WITH_PROTOBUF=ON \
+      -D BUILD_opencv_world=OFF \
+      -D BUILD_TESTS=OFF \
+      -D BUILD_PERF_TESTS=OFF \
+      -D BUILD_EXAMPLES=OFF \
+      -DCMAKE_CXX_FLAGS="-march=native" \
+      -D ENABLE_FAST_MATH=ON \  
+      -D ENABLE_NEON=ON \  
+      -D ENABLE_VFPV3=ON \ 
+      -D ENABLE_VEC=ON \
+      ..
