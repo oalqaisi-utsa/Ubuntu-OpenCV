@@ -44,5 +44,9 @@ RUN apt-get update && apt-get -y upgrade \
       .. \
     && make -j$(nproc) \
     && make install \
+    && rm -rf /tmp/*; \
+    && apt-get -qq autoremove; \
+    && apt-get -qq clean; \
+    && rm -rf /var/lib/apt/lists/*
     
 CMD ["bash"]
