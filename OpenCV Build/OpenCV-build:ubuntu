@@ -1,7 +1,8 @@
 FROM ubuntu
 
 LABEL name="Osamah Alqaisi" \
-      email="osamah.alqaisi@my.utsa.edu"
+	email="osamah.alqaisi@my.utsa.edu"
+	nickname="good2"
 
 RUN apt-get update && apt-get -y upgrade \
 	&& apt-get -y install --no-install-recommends \
