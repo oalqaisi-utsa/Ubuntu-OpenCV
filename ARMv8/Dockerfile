@@ -1,4 +1,4 @@
-FROM oalqaisi/opencv-build:$(arm64 or ubuntu) AS build
+FROM oalqaisi/opencv-build:ubuntu AS build
 
 FROM ubuntu AS base
 
